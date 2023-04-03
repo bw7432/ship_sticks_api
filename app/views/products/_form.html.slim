@@ -1,0 +1,14 @@
+= simple_form_for(@product) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :name
+    = f.input :type_of
+    = f.input :length
+    = f.input :width
+    = f.input :height
+    = f.input :weight
+
+  .form-actions
+    = f.button :submit
