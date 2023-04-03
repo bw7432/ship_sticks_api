@@ -12,4 +12,10 @@ rake load_products
 rails s
 ```
 
-# show routes
+# api endpoint to search a product
+
+- /api/v1/products
+
+- pass in length, width, height, weight as query string parameters
+
+
