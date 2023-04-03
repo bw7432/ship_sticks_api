@@ -45,6 +45,7 @@ gem 'pg'
 gem 'simple_form'
 gem "slim-rails"
 gem 'bootstrap', '~> 5.2.2'
+gem 'rack-cors', :require => 'rack/cors'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

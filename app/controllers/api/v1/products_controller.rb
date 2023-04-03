@@ -7,7 +7,7 @@ module Api
       def index
         @products = Product.all
 
-        success!(::V1::ProductsBlueprint.render_as_hash(@products))
+        success!(::V1::ProductsBlueprint.render_as_hash(@products.to_a))
       end
 
       # GET /products/1 or /products/1.json
@@ -21,7 +21,6 @@ module Api
 
         if @product.save
           success!(::V1::ProductsBlueprint.render_as_hash(@product))
-          render json: @product, status: :created, location: @product
         else
           fail!(@product.errors.full_messages)
         end
@@ -31,7 +30,6 @@ module Api
       def update
         if @product.update(product_params)
           success!(::V1::ProductsBlueprint.render_as_hash(@product))
-          render json: @product
         else
           fail!(@product.errors.full_messages)
         end
