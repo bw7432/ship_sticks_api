@@ -8,4 +8,11 @@ class Product
   field :height, type: Integer
   field :weight, type: Integer
 
+  validates :name, presence: true
+  validates :type_of, presence: true
+  validates :length, presence: true
+  validates :width, presence: true
+  validates :height, presence: true
+  validates :weight, presence: true
+
 end
