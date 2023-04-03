@@ -1,31 +1,3 @@
 p#product
 
-button.btn.btn-primary[type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"]
-  |  Launch demo modal 
-#exampleModal.modal.fade[tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"]
-  .modal-dialog
-    .modal-content
-      .modal-header
-        h1#exampleModalLabel.modal-title.fs-5
-          | Search Products
-        button.btn-close[type="button" data-bs-dismiss="modal" aria-label="Close"]
-      .modal-body
-        = simple_form_for(:product, url: 'api/v1/products', method: :get) do |f|
-          / = f.error_notification
-          / = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-          .form-inputs
-            = f.input :type_of, collection: [['golf'], ['ski'], ['luggage']], include_blank: "Please Choose..."
-            = f.input :length, input_html: { type: 'number' }
-            = f.input :width, input_html: { type: 'number' }
-            = f.input :height, input_html: { type: 'number' }
-            = f.input :weight, input_html: { type: 'number' }
-
-          / .form-actions
-          /   = f.button :submit, class: 'btn btn-primary', value: 'Search'
-          .modal-footer
-            button.btn.btn-secondary[type="button" data-bs-dismiss="modal"]
-              | Close
-            = f.button :submit, class: 'btn btn-primary', value: 'Search'
-            / button.btn.btn-primary[type="button"]
-            /   | Save changes
