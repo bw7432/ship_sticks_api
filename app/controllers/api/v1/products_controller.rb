@@ -5,15 +5,18 @@ module Api
 
       # GET /products or /products.json
       def index
-        @products = Product.where(type_of: params[:type_of].downcase,
-          :length.gte => params[:length],
-          :width.gte => params[:width],
-          :height.gte => params[:height],
-          :weight.gte => params[:weight])\
-          .sort(["length","asc"])
-          .sort(["width","asc"])
-          .sort(["height","asc"])
-          .sort(["weight","asc"])
+        @products = Product.all
+        if params[:length].present?
+          @products = @products.where(type_of: params[:type_of]&.downcase,
+            :length.gte => params[:length],
+            :width.gte => params[:width],
+            :height.gte => params[:height],
+            :weight.gte => params[:weight])
+            .sort(["length","asc"])
+            .sort(["width","asc"])
+            .sort(["height","asc"])
+            .sort(["weight","asc"])
+          end
 
         success!(::V1::ProductsBlueprint.render_as_hash(@products.to_a))
       end
