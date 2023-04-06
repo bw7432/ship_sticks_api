@@ -7,7 +7,7 @@ module Api
       def index
         @products = Product.all
         if params[:length].present?
-          @products = @products.where(type_of: params[:type_of]&.downcase,
+          @products = @products.where(
             :length.gte => params[:length],
             :width.gte => params[:width],
             :height.gte => params[:height],
